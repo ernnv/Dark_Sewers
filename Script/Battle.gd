@@ -4,6 +4,9 @@ const BATTLE_UNITS = preload("res://BattleUnits.tres")
 const GAMEOVER = preload("res://Prefabs/GameOver.tscn")
 
 export(Array, PackedScene) var new_enemy = []
+export(Array, PackedScene) var new_boss = []
+
+var spawned = 1
 
 onready var c_buttons = $UI/c_buttons
 onready var animationPlayer = $AnimationPlayer
@@ -41,8 +44,16 @@ func create_new_enemy():
 	new_enemy.shuffle()
 	var Enemy = new_enemy.front()
 	var enemy = Enemy.instance()
+	
 	enemyPosition.add_child(enemy)
 	enemy.connect("on_death", self, "_on_Enemy_on_death")
+
+func create_new_boss():
+	var Boss = new_boss.front()
+	var boss = Boss.instance()
+	
+	enemyPosition.add_child(boss)
+	boss.connect("on_death", self, "_on_Enemy_on_death")
 
 func _on_Enemy_on_death():
 	c_buttons.hide()
@@ -53,17 +64,20 @@ func _on_Enemy_on_death():
 
 func _on_NextRoomButton_pressed():
 	var Player = BATTLE_UNITS.Player
-	
 	nextRoomButton.hide()
-	
+
 	animationPlayer.play("anim_fade_to_newroom")
 	yield(animationPlayer, "animation_finished")
 	
 	Player.ap = Player.max_ap
 	
-	c_buttons.show()
+	if spawned % 3 == 0:
+		create_new_boss()
+		spawned = 1
+	else:
+		create_new_enemy()
+		spawned += 1
 	
-	create_new_enemy()
 	start_player_turn()
 
 func _on_PlayerStats_died():

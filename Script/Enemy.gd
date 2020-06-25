@@ -51,7 +51,6 @@ func take_damage(damage):
 		give_experience()
 		experience_animation() 
 		yield(experience_animation(), "completed")
-		#emit_signal("on_death")
 		queue_free()
 	else:
 		animationPlayer.play("anim_shake")
