@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Images/Rat.png" type="Texture" id=1]
+[ext_resource path="res://Script/Enemy.gd" type="Script" id=2]
+[ext_resource path="res://Prefabs/HoverInfo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Themes/DefaultTheme.tres" type="Theme" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "anim_attack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -5, -2 ), Vector2( -13, 4 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ null ],
+"method": "deal_damage"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "anim_enemy_experience"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Experience:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -17.4913, -6.2045 ), Vector2( -17.4913, -17.2045 ), Vector2( -17.4913, -27.2045 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.35, 0.4, 0.45, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1, 0 ), Vector2( 3, 0 ), Vector2( -2, -1 ), Vector2( 1, 1 ), Vector2( -2, -1 ), Vector2( 2, -2 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="l_HP" type="Label" parent="."]
+margin_left = -20.0
+margin_top = -27.0
+margin_right = 20.0
+margin_bottom = -13.0
+text = "25 HP"
+align = 1
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Experience" type="Label" parent="."]
+visible = false
+margin_left = -17.4913
+margin_top = -6.2045
+margin_right = 16.5087
+margin_bottom = 5.7955
+theme = ExtResource( 4 )
+text = "+4 EXP"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/anim_attack = SubResource( 1 )
+anims/anim_enemy_experience = SubResource( 4 )
+anims/anim_shake = SubResource( 3 )
+
+[node name="HoverInfo" parent="." instance=ExtResource( 3 )]

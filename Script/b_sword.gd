@@ -1,0 +1,19 @@
+extends "res://Script/ActionButton.gd"
+
+const SLASH_ANIMATION = preload("res://Animations/SwordSlash.tscn")
+
+func _on_pressed():
+	var enemy = BATTLE_UNITS.Enemy
+	var player = BATTLE_UNITS.Player
+	
+	if enemy != null and player != null:
+		create_slash(enemy.global_position)
+		enemy.take_damage(player.ATTACK_DAMAGE)
+		player.mp  += 2
+		player.ap -= 1
+
+func create_slash(position):
+	var slash = SLASH_ANIMATION.instance()
+	var main = get_tree().current_scene
+	main.add_child(slash)
+	slash.global_position = position

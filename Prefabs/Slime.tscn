@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Prefabs/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/Slime.png" type="Texture" id=2]
+
+[node name="Slime" instance=ExtResource( 1 )]
+hp = 35
+experience = 3
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="l_HP" parent="." index="1"]
+text = "35HP"
+
+[node name="HoverInfo" parent="." index="3"]
+margin_left = -22.0
+margin_top = -10.0
+margin_right = 20.0
+margin_bottom = 10.0
+description = "Enemy: Horrendous Goo Slime."

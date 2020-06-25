@@ -1,0 +1,236 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Prefabs/Rat.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/Mobile RPG Mockup.png" type="Texture" id=2]
+[ext_resource path="res://Images/Dungeon.png" type="Texture" id=3]
+[ext_resource path="res://Script/Battle.gd" type="Script" id=4]
+[ext_resource path="res://Script/PlayerStats.gd" type="Script" id=5]
+[ext_resource path="res://Script/p_player_stats.gd" type="Script" id=6]
+[ext_resource path="res://Buttons/b_sword.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Buttons/b_heal.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Prefabs/Slime.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Buttons/Button9Slice.tres" type="StyleBox" id=10]
+[ext_resource path="res://Script/p_player_level.gd" type="Script" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="Animation" id=2]
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Fade:color")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.35, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[node name="Battle" type="Node"]
+script = ExtResource( 4 )
+new_enemy = [ ExtResource( 1 ), ExtResource( 9 ) ]
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="Dungeon" type="Sprite" parent="."]
+position = Vector2( 45, 80 )
+texture = ExtResource( 3 )
+
+[node name="Mobile RPG Mockup" type="Sprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.2 )
+position = Vector2( 45, 80 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="EnemyPosition" type="Position2D" parent="."]
+position = Vector2( 46, 32 )
+
+[node name="Rat" parent="EnemyPosition" instance=ExtResource( 1 )]
+
+[node name="UI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="UI"]
+margin_right = 90.0
+margin_bottom = 46.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextRoomButton" type="Button" parent="UI/CenterContainer"]
+visible = false
+margin_left = 17.0
+margin_top = 16.0
+margin_right = 73.0
+margin_bottom = 29.0
+rect_min_size = Vector2( 32, 13 )
+text = "Move Forward"
+
+[node name="p_player_stats" type="Panel" parent="UI"]
+margin_left = 3.0
+margin_top = 47.0
+margin_right = 87.0
+margin_bottom = 69.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="c_player_stats" type="HBoxContainer" parent="UI/p_player_stats"]
+margin_right = 83.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP" type="Label" parent="UI/p_player_stats/c_player_stats"]
+margin_top = 1.0
+margin_right = 25.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "HP
+25"
+align = 1
+
+[node name="AP" type="Label" parent="UI/p_player_stats/c_player_stats"]
+margin_left = 29.0
+margin_top = 1.0
+margin_right = 54.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "AP
+3"
+align = 1
+
+[node name="MP" type="Label" parent="UI/p_player_stats/c_player_stats"]
+margin_left = 58.0
+margin_top = 1.0
+margin_right = 83.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "MP
+10"
+align = 1
+
+[node name="c_buttons" type="GridContainer" parent="UI"]
+margin_left = 9.0
+margin_top = 72.0
+margin_right = 81.0
+margin_bottom = 133.0
+custom_constants/vseparation = 3
+custom_constants/hseparation = 8
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SwordButton" parent="UI/c_buttons" instance=ExtResource( 7 )]
+margin_right = 32.0
+margin_bottom = 13.0
+
+[node name="HealButton" parent="UI/c_buttons" instance=ExtResource( 8 )]
+margin_left = 40.0
+margin_right = 72.0
+margin_bottom = 13.0
+
+[node name="p_player_level" type="Panel" parent="UI"]
+margin_left = 1.0
+margin_top = 110.0
+margin_right = 89.0
+margin_bottom = 133.0
+custom_styles/panel = ExtResource( 10 )
+script = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="c_player_level" type="HBoxContainer" parent="UI/p_player_level"]
+margin_left = 1.0
+margin_top = 2.0
+margin_right = 87.0
+margin_bottom = 21.0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LVL" type="Label" parent="UI/p_player_level/c_player_level"]
+margin_right = 20.0
+margin_bottom = 19.0
+text = "LVL
+1"
+align = 1
+
+[node name="EXP" type="Label" parent="UI/p_player_level/c_player_level"]
+margin_left = 24.0
+margin_right = 44.0
+margin_bottom = 19.0
+text = "EXP
+0"
+align = 1
+
+[node name="MAXEXP" type="Label" parent="UI/p_player_level/c_player_level"]
+margin_left = 48.0
+margin_right = 89.0
+margin_bottom = 19.0
+text = "NEXT LVL
+5"
+align = 1
+
+[node name="p_textbox" type="Panel" parent="UI"]
+margin_left = -1.0
+margin_top = 136.0
+margin_right = 91.0
+margin_bottom = 159.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="t_description" type="RichTextLabel" parent="UI/p_textbox"]
+margin_left = 3.0
+margin_top = 2.0
+margin_right = 89.0
+margin_bottom = 21.0
+custom_styles/normal = SubResource( 1 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Fade" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/anim_fade_to_newroom = SubResource( 2 )
+[connection signal="ap_changed" from="PlayerStats" to="UI/p_player_stats" method="_on_PlayerStats_ap_changed"]
+[connection signal="died" from="PlayerStats" to="." method="_on_PlayerStats_died"]
+[connection signal="experience_changed" from="PlayerStats" to="UI/p_player_level" method="_on_PlayerStats_experience_changed"]
+[connection signal="hp_changed" from="PlayerStats" to="UI/p_player_stats" method="_on_PlayerStats_hp_changed"]
+[connection signal="level_changed" from="PlayerStats" to="UI/p_player_level" method="_on_PlayerStats_level_changed"]
+[connection signal="max_exp_changed" from="PlayerStats" to="UI/p_player_level" method="_on_PlayerStats_max_exp_changed"]
+[connection signal="mp_changed" from="PlayerStats" to="UI/p_player_stats" method="_on_PlayerStats_mp_changed"]
+[connection signal="pressed" from="UI/CenterContainer/NextRoomButton" to="." method="_on_NextRoomButton_pressed"]
