@@ -45,8 +45,11 @@ func create_new_enemy():
 	enemy.connect("on_death", self, "_on_Enemy_on_death")
 
 func _on_Enemy_on_death():
-	nextRoomButton.show()
 	c_buttons.hide()
+	
+	yield(get_tree().create_timer(1), "timeout")
+	
+	nextRoomButton.show()
 
 func _on_NextRoomButton_pressed():
 	var Player = BATTLE_UNITS.Player

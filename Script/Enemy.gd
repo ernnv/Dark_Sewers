@@ -47,15 +47,15 @@ func deal_damage():
 func take_damage(damage):
 	self.hp -= damage
 	if is_dead():
+		emit_signal("on_death")
 		give_experience()
 		experience_animation() 
-		
-		yield(get_tree().create_timer(1), "timeout")
-		
-		emit_signal("on_death")
+		yield(experience_animation(), "completed")
+		#emit_signal("on_death")
 		queue_free()
 	else:
 		animationPlayer.play("anim_shake")
+		yield(animationPlayer, "animation_finished")
 
 func give_experience():
 	var Player = BATTLE_UNITS.Player
