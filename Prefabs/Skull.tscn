@@ -54,7 +54,6 @@ experience = 10
 
 [node name="Sprite" parent="." index="0"]
 visible = false
-position = Vector2( 0, -2 )
 texture = ExtResource( 2 )
 
 [node name="l_HP" parent="." index="1"]

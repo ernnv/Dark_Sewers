@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SFX/Main Menu.wav" type="AudioStream" id=1]
+
+[node name="MenuMusic" type="AudioStreamPlayer"]
+stream = ExtResource( 1 )
+volume_db = -20.0
+
+[node name="MusicFade" type="Tween" parent="."]

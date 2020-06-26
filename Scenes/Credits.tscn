@@ -1,0 +1,100 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Images/Dungeon.png" type="Texture" id=1]
+[ext_resource path="res://Prefabs/MenuButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prefabs/FadeIn.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Script/Credits.gd" type="Script" id=4]
+[ext_resource path="res://Prefabs/MenuMusic.tscn" type="PackedScene" id=5]
+
+[node name="CreditsMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 14.0
+margin_right = 80.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 70, 12 )
+text = "CREDITS"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b_return" parent="." instance=ExtResource( 2 )]
+margin_left = 28.1278
+margin_top = 141.19
+margin_right = 60.1278
+margin_bottom = 154.19
+text = "Back"
+scene_to_load = "res://Scenes/TitleScreen.tscn"
+
+[node name="MusicSFX" type="Label" parent="."]
+margin_left = 10.6766
+margin_top = 52.0
+margin_right = 80.6766
+margin_bottom = 64.0
+text = "Music and SFX:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Carlos" type="Label" parent="."]
+margin_left = 10.6766
+margin_top = 60.0
+margin_right = 80.6766
+margin_bottom = 72.0
+text = "Carlos Jimenez"
+align = 1
+
+[node name="Special" type="Label" parent="."]
+margin_left = 10.6766
+margin_top = 84.0
+margin_right = 80.6766
+margin_bottom = 96.0
+text = "Special Thanks:"
+align = 1
+
+[node name="HeartBeast" type="Label" parent="."]
+margin_left = 10.6766
+margin_top = 92.0
+margin_right = 80.6766
+margin_bottom = 104.0
+text = "HeartBeast"
+align = 1
+
+[node name="Programmer" type="Label" parent="."]
+margin_left = 10.6766
+margin_top = 114.0
+margin_right = 80.6766
+margin_bottom = 126.0
+text = "Programming:"
+align = 1
+
+[node name="Ernesto" type="Label" parent="."]
+margin_left = 10.6766
+margin_top = 123.0
+margin_right = 80.6766
+margin_bottom = 135.0
+text = "Ernesto Villalobos"
+align = 1
+
+[node name="FadeIn" parent="." instance=ExtResource( 3 )]
+
+[node name="MenuMusic" parent="." instance=ExtResource( 5 )]
+volume_db = -80.0
+[connection signal="pressed" from="b_return" to="." method="_on_b_return_pressed"]

@@ -10,7 +10,6 @@ func _ready():
 		expLabel.text = "+" + str(experience) + "  EXP"
 	
 	skull_intro_animation()
-	yield(skull_intro_animation(), "completed")
 
 func attack() -> void:
 	yield(get_tree().create_timer(1), "timeout")

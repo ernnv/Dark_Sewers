@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Script/MenuButton.gd" type="Script" id=1]
+[ext_resource path="res://SFX/sfx_UI_01.wav" type="AudioStream" id=2]
+
+[node name="MenuButton" type="Button"]
+margin_right = 32.0
+margin_bottom = 13.0
+rect_min_size = Vector2( 32, 13 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXButton" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -30.0
+[connection signal="mouse_entered" from="." to="." method="_on_MenuButton_mouse_entered"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Sewers Battle.wav-400591d8205a4251b1de62efccf2d92b.sample"
+
+[deps]
+
+source_file="res://SFX/Sewers Battle.wav"
+dest_files=[ "res://.import/Sewers Battle.wav-400591d8205a4251b1de62efccf2d92b.sample" ]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

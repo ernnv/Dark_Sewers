@@ -10,10 +10,12 @@ var spawned = 1
 
 onready var c_buttons = $UI/c_buttons
 onready var animationPlayer = $AnimationPlayer
+onready var musicPlayer = $BattleMusic
 onready var nextRoomButton = $UI/CenterContainer/NextRoomButton
 onready var enemyPosition = $EnemyPosition
 
 func _ready():
+	musicPlayer.play()
 	randomize()
 	start_player_turn()
 	
@@ -49,11 +51,15 @@ func create_new_enemy():
 	enemy.connect("on_death", self, "_on_Enemy_on_death")
 
 func create_new_boss():
+	musicPlayer.stop()
 	var Boss = new_boss.front()
 	var boss = Boss.instance()
 	
 	enemyPosition.add_child(boss)
 	boss.connect("on_death", self, "_on_Enemy_on_death")
+
+	yield(get_tree().create_timer(3.5), "timeout")
+	musicPlayer.play()
 
 func _on_Enemy_on_death():
 	c_buttons.hide()
