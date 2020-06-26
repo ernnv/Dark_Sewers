@@ -1,7 +1,7 @@
 extends Control
 
 onready var animationPlayer  = $AnimationPlayer
-onready var gameOverButton = $b_gameover
+onready var gameOverButton = $b_retry
 onready var quitButton = $b_quit
 
 func _ready():
