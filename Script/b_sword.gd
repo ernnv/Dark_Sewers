@@ -8,7 +8,7 @@ func _on_pressed():
 	
 	if enemy != null and player != null:
 		create_slash(enemy.global_position)
-		enemy.take_damage(player.ATTACK_DAMAGE)
+		enemy.take_damage(player.attack_damage + player.attackmod)
 		player.mp  += 2
 		player.ap -= 1
 

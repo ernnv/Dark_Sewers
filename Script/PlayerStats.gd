@@ -1,14 +1,19 @@
 extends Node
 
 const BATTLE_UNITS = preload("res://BattleUnits.tres")
-const ATTACK_DAMAGE = 4
-const HEAL = 2
+
+var attack_damage = 4
+var attackmod = 0
+
+var heal = 3
+var healmod = 0
 
 var max_hp = 25
 var hp = max_hp setget set_hp
 
 var max_ap = 3
 var ap =  max_ap setget set_ap
+var apmod = 0
 
 var max_mp = 10
 var mp = max_mp setget set_mp
