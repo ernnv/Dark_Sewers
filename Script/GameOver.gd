@@ -1,25 +1,28 @@
 extends Control
 
 onready var animationPlayer  = $AnimationPlayer
-onready var gameOverButton = $b_retry
-onready var quitButton = $b_quit
+
 
 func _ready():
-	yield(get_tree().create_timer(1), "timeout")
 	set_black_screen()
+	yield(animationPlayer, "animation_finished")
 	
-	yield(get_tree().create_timer(1), "timeout")
 	set_died_text()
+	yield(animationPlayer, "animation_finished")
 	
-	yield(get_tree().create_timer(2), "timeout")
-	gameOverButton.show()
-	quitButton.show()
+	for button in $g_gameover.get_children():
+		button.show()
 
 func set_black_screen():
 	animationPlayer.play("anim_blackscreen")
-	yield(animationPlayer, "animation_finished")
 
 func set_died_text():
 	animationPlayer.play("anim_you_died")
-	yield(animationPlayer, "animation_finished")
 
+func _on_b_retry_pressed():
+	var main = get_node("/root/Battle")
+	main.get_tree().reload_current_scene()
+
+func _on_b_quit_pressed():
+	var main = get_node("/root/Battle")
+	main.get_tree().quit()
