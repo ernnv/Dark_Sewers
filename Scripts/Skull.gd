@@ -1,4 +1,4 @@
-extends "res://Script/Enemy.gd"
+extends "res://Scripts/Enemy.gd"
 
 onready var laughLabel = $Laugh
 onready var introLabel = $Intro

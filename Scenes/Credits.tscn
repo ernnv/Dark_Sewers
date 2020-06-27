@@ -3,8 +3,9 @@
 [ext_resource path="res://Images/Dungeon.png" type="Texture" id=1]
 [ext_resource path="res://Prefabs/MenuButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Prefabs/FadeIn.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Script/Credits.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Credits.gd" type="Script" id=4]
 [ext_resource path="res://Prefabs/MenuMusic.tscn" type="PackedScene" id=5]
+
 
 [node name="CreditsMenu" type="Control"]
 anchor_right = 1.0

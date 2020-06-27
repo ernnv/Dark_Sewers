@@ -1,7 +1,11 @@
-extends "res://Script/ActionButton.gd"
+extends "res://Scripts/ActionButton.gd"
 
 const SLASH_ANIMATION = preload("res://Animations/SwordSlash.tscn")
 
+func _ready():
+	var Player = BATTLE_UNITS.Player
+	hoverInfo.description = "Sword Attack: Deals " + str(Player.attack_damage + Player.attackmod) + " damage and restores 3 MP."
+	
 func _on_pressed():
 	var enemy = BATTLE_UNITS.Enemy
 	var player = BATTLE_UNITS.Player
