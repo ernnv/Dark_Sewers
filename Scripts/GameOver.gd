@@ -2,7 +2,6 @@ extends Control
 
 onready var animationPlayer  = $AnimationPlayer
 
-
 func _ready():
 	set_black_screen()
 	yield(animationPlayer, "animation_finished")

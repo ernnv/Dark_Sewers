@@ -4,7 +4,6 @@
 [ext_resource path="res://Images/Skull.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Skull.gd" type="Script" id=3]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "anim_skull_intro"
 length = 3.5

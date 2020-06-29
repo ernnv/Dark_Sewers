@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Prefabs/ActionButton.tscn" type="PackedScene" id=1]
+
+[node name="b_block" instance=ExtResource( 1 )]
+text = "Block"
+
+[node name="HoverInfo" parent="." index="0"]
+description = "Block: Inmune to damage next turn, restores 2 MP."

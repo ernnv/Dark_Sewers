@@ -18,7 +18,7 @@ var apmod = 0
 var max_mp = 10
 var mp = max_mp setget set_mp
 
-var max_level = 20
+var max_level = 10
 var level = 1 setget set_level
 
 var max_exp = round(pow(level,  1.8) + level * 4) setget set_max_exp

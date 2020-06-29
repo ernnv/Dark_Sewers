@@ -3,6 +3,8 @@ extends "res://Scripts/Enemy.gd"
 onready var laughLabel = $Laugh
 onready var introLabel = $Intro
 
+signal on_Skull_death
+
 func _ready():
 	BATTLE_UNITS.Enemy = self
 	
@@ -36,3 +38,15 @@ func skull_intro_animation():
 	introLabel.hide()
 	sprite.show()
 	hpLabel.show()
+
+func take_damage(damage):
+	self.hp -= damage
+	if is_dead():
+		emit_signal("on_Skull_death")
+		give_experience()
+		experience_animation() 
+		yield(experience_animation(), "completed")
+		queue_free()
+	else:
+		animationPlayer.play("anim_shake")
+		yield(animationPlayer, "animation_finished")

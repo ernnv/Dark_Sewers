@@ -2,6 +2,7 @@ extends Node
 
 const BATTLE_UNITS = preload("res://BattleUnits.tres")
 const GAMEOVER = preload("res://Prefabs/GameOver.tscn")
+const BLOCK_ABILITY_UNLOCKED = preload("res://Prefabs/BlockAbility.tscn")
 
 export(Array, PackedScene) var new_enemy = []
 export(Array, PackedScene) var new_boss = []
@@ -50,23 +51,31 @@ func create_new_enemy():
 	enemyPosition.add_child(enemy)
 	enemy.connect("on_death", self, "_on_Enemy_on_death")
 
-func create_new_boss():
+func create_skull_boss():
 	musicPlayer.stop()
 	var Boss = new_boss.front()
 	var boss = Boss.instance()
 	
 	enemyPosition.add_child(boss)
-	boss.connect("on_death", self, "_on_Enemy_on_death")
+	boss.connect("on_Skull_death", self, "_on_Skull_death")
 
 	yield(get_tree().create_timer(3.5), "timeout")
 	musicPlayer.play()
 
 func _on_Enemy_on_death():
 	c_buttons.hide()
-	
+
 	yield(get_tree().create_timer(1), "timeout")
 	
 	nextRoomButton.show()
+
+func _on_Skull_death():
+	print("Skull is dead")
+	c_buttons.hide()
+	
+	yield(get_tree().create_timer(0.5), "timeout")
+	var blockAbility = BLOCK_ABILITY_UNLOCKED.instance()
+	add_child(blockAbility)
 
 func _on_NextRoomButton_pressed():
 	var Player = BATTLE_UNITS.Player
@@ -78,7 +87,7 @@ func _on_NextRoomButton_pressed():
 	Player.ap = Player.max_ap
 	
 	if spawned % 3 == 0:
-		create_new_boss()
+		create_skull_boss()
 		spawned = 1
 	else:
 		create_new_enemy()
