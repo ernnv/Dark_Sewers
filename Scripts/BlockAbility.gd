@@ -5,7 +5,6 @@ onready var blockUnlockButton = $b_blockunlock
 onready var sfxPlayer = $SFXPlayer
 
 func _ready():
-	print("block me")
 	set_black_screen()
 	yield(animationPlayer, "animation_finished")
 	
@@ -23,7 +22,7 @@ func _on_b_blockunlock_mouse_entered():
 func _on_b_blockunlock_pressed():
 	var main = get_node("/root/Battle")
 	main.c_buttons.show()
-	main.c_buttons.find_node("b_block").show()
+	main.c_buttons.find_node("BlockButton").show()
 	main.nextRoomButton.show()
 	queue_free()
 

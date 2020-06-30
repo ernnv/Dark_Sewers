@@ -2,12 +2,17 @@ extends Node
 
 const BATTLE_UNITS = preload("res://BattleUnits.tres")
 
+# Character Skills
 var attack_damage = 4
 var attackmod = 0
 
 var heal = 3
 var healmod = 0
 
+var block = false
+var block_cd = 0 setget set_block_cd
+
+# Character Stats
 var max_hp = 25
 var hp = max_hp setget set_hp
 
@@ -16,7 +21,7 @@ var ap =  max_ap setget set_ap
 var apmod = 0
 
 var max_mp = 10
-var mp = max_mp setget set_mp
+var mp = 0 setget set_mp
 
 var max_level = 10
 var level = 1 setget set_level
@@ -30,6 +35,7 @@ signal mp_changed(new_mp)
 signal level_changed(new_level)
 signal experience_changed(new_exp)
 signal max_exp_changed(new_max_exp)
+signal block_cd_changed(new_block_cd)
 signal end_turn
 signal died
 
@@ -45,6 +51,9 @@ func set_ap(new_ap):
 	emit_signal("ap_changed", ap)
 	if ap == 0:
 		emit_signal("end_turn")
+		if self.block_cd > 0:
+			self.block_cd -= 1
+			print(self.block_cd)
 
 func set_mp(new_mp):
 	mp = clamp(new_mp, 0, max_mp)
@@ -68,7 +77,11 @@ func set_max_exp(new_max_exp):
 func level_up():
 	self.level += 1
 	self.max_exp = round(pow(self.level,  1.8) + self.level * 4)
-	
+
+func set_block_cd(new_block_cd):
+	block_cd = clamp(new_block_cd, 0, 3)
+	emit_signal("block_cd_changed", block_cd)
+
 # Functions NODE
 func _ready():
 	BATTLE_UNITS.Player = self

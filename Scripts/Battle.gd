@@ -32,6 +32,8 @@ func start_enemy_turn():
 	if enemy != null and not enemy.is_queued_for_deletion():
 		enemy.attack()
 		yield(enemy, "end_turn")
+	
+	
 	start_player_turn()
 
 func start_player_turn():
@@ -39,6 +41,7 @@ func start_player_turn():
 	var Player = BATTLE_UNITS.Player
 	
 	Player.ap = Player.max_ap
+	
 	yield(Player, "end_turn")
 	
 	start_enemy_turn()
@@ -58,7 +61,7 @@ func create_skull_boss():
 	
 	enemyPosition.add_child(boss)
 	boss.connect("on_Skull_death", self, "_on_Skull_death")
-
+	
 	yield(get_tree().create_timer(3.5), "timeout")
 	musicPlayer.play()
 
@@ -70,12 +73,13 @@ func _on_Enemy_on_death():
 	nextRoomButton.show()
 
 func _on_Skull_death():
-	print("Skull is dead")
 	c_buttons.hide()
 	
 	yield(get_tree().create_timer(0.5), "timeout")
 	var blockAbility = BLOCK_ABILITY_UNLOCKED.instance()
 	add_child(blockAbility)
+	
+	nextRoomButton.show()
 
 func _on_NextRoomButton_pressed():
 	var Player = BATTLE_UNITS.Player

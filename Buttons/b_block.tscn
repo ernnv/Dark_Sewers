@@ -6,4 +6,4 @@
 text = "Block"
 
 [node name="HoverInfo" parent="." index="0"]
-description = "Block: Inmune to damage next turn, restores 2 MP."
+description = "Block: Takes no damage next turn, restores 2 MP. Costs 2 AP"

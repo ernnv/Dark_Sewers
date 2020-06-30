@@ -8,8 +8,9 @@ func _ready():
 	
 func _on_pressed():
 	var player = BATTLE_UNITS.Player
+	var enemy = BATTLE_UNITS.Enemy
 	
-	if player != null and player.mp >= mana_cost:
+	if player != null and enemy != null and player.mp >= mana_cost:
 		player.hp += (player.heal + player.healmod)
 		player.mp -= mana_cost
 		player.ap -= 1

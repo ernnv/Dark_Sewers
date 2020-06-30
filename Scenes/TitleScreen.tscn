@@ -56,7 +56,7 @@ scene_to_load = "res://Scenes/Battle.tscn"
 margin_top = 17.0
 margin_bottom = 30.0
 text = "Credits"
-scene_to_load = "res://Scenes/Credits.tsscn"
+scene_to_load = "res://Scenes/Credits.tscn"
 
 [node name="b_quit" parent="MenuButtons" instance=ExtResource( 3 )]
 margin_top = 34.0

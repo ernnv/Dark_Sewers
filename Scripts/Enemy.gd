@@ -18,6 +18,7 @@ signal on_death
 # Functions NODE
 func _ready():
 	BATTLE_UNITS.Enemy = self
+	var Player = BATTLE_UNITS.Player
 	
 	if expLabel != null:
 		expLabel.text = "+" + str(experience) + "  EXP"
@@ -42,7 +43,12 @@ func attack() -> void:
 
 func deal_damage():
 	var Player = BATTLE_UNITS.Player
-	Player.hp -= attack_damage
+	
+	if Player.block == true:
+		# Create block animation
+		Player.block = false
+	else:
+		Player.hp -= attack_damage
 
 func take_damage(damage):
 	self.hp -= damage
