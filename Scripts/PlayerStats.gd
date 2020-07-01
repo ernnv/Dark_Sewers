@@ -36,6 +36,9 @@ signal level_changed(new_level)
 signal experience_changed(new_exp)
 signal max_exp_changed(new_max_exp)
 signal block_cd_changed(new_block_cd)
+
+signal level_4
+
 signal end_turn
 signal died
 
