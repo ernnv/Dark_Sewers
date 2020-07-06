@@ -21,3 +21,7 @@ func create_slash(position):
 	var main = get_tree().current_scene
 	main.add_child(slash)
 	slash.global_position = position
+
+func _on_PlayerStats_attackmod_changed(new_attackmod):
+	var Player = BATTLE_UNITS.Player
+	hoverInfo.description = "Sword Attack: Deals " + str(Player.attack_damage + new_attackmod) + " damage and restores 3 MP."

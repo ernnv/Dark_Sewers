@@ -1,0 +1,15 @@
+[gd_scene format=2]
+
+[node name="DialogBox" type="Node2D"]
+
+[node name="DialogFrame" type="Polygon2D" parent="."]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( 4, 140, 88, 140, 88, 148, 88, 156, 4, 156 )
+
+[node name="DialogText" type="RichTextLabel" parent="DialogFrame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

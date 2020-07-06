@@ -3,6 +3,7 @@ extends Node
 const BATTLE_UNITS = preload("res://BattleUnits.tres")
 const GAMEOVER = preload("res://Prefabs/GameOver.tscn")
 const BLOCK_ABILITY_UNLOCKED = preload("res://Prefabs/BlockAbility.tscn")
+const LEVEL4 = preload("res://LevelScreens/Level4.tscn")
 
 export(Array, PackedScene) var new_enemy = []
 export(Array, PackedScene) var new_boss = []
@@ -79,6 +80,8 @@ func _on_Skull_death():
 	var blockAbility = BLOCK_ABILITY_UNLOCKED.instance()
 	add_child(blockAbility)
 	
+	blockAbility.connect("cinematic_ended", self, "_on_BlockCinematic_ended")
+	
 	nextRoomButton.show()
 
 func _on_NextRoomButton_pressed():
@@ -106,3 +109,6 @@ func _on_PlayerStats_died():
 	var gameOver = GAMEOVER.instance()
 	add_child(gameOver)
 
+func _on_BlockCinematic_ended():
+		var level4 = LEVEL4.instance()
+		add_child(level4)

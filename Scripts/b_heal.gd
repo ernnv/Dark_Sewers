@@ -14,3 +14,7 @@ func _on_pressed():
 		player.hp += (player.heal + player.healmod)
 		player.mp -= mana_cost
 		player.ap -= 1
+
+func _on_PlayerStats_healmod_changed(new_healmod):
+	var Player = BATTLE_UNITS.Player
+	hoverInfo.description = "Heal Spell: Heals " + str(Player.heal + new_healmod) + " health points. Cast on self."
