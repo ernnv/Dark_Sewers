@@ -243,9 +243,11 @@ anims/anim_fade_to_newroom = SubResource( 2 )
 stream = ExtResource( 13 )
 volume_db = -20.0
 [connection signal="ap_changed" from="PlayerStats" to="UI/p_player_stats" method="_on_PlayerStats_ap_changed"]
+[connection signal="attackmod_changed" from="PlayerStats" to="UI/c_buttons/SwordButton" method="_on_PlayerStats_attackmod_changed"]
 [connection signal="block_cd_changed" from="PlayerStats" to="UI/c_buttons/BlockButton" method="_on_PlayerStats_block_cd_changed"]
 [connection signal="died" from="PlayerStats" to="." method="_on_PlayerStats_died"]
 [connection signal="experience_changed" from="PlayerStats" to="UI/p_player_level" method="_on_PlayerStats_experience_changed"]
+[connection signal="healmod_changed" from="PlayerStats" to="UI/c_buttons/HealButton" method="_on_PlayerStats_healmod_changed"]
 [connection signal="hp_changed" from="PlayerStats" to="UI/p_player_stats" method="_on_PlayerStats_hp_changed"]
 [connection signal="level_changed" from="PlayerStats" to="UI/p_player_level" method="_on_PlayerStats_level_changed"]
 [connection signal="max_exp_changed" from="PlayerStats" to="UI/p_player_level" method="_on_PlayerStats_max_exp_changed"]

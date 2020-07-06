@@ -4,6 +4,8 @@ onready var animationPlayer = $AnimationPlayer
 onready var blockUnlockButton = $b_blockunlock
 onready var sfxPlayer = $SFXPlayer
 
+signal cinematic_ended
+
 func _ready():
 	set_black_screen()
 	yield(animationPlayer, "animation_finished")
@@ -24,6 +26,7 @@ func _on_b_blockunlock_pressed():
 	main.c_buttons.show()
 	main.c_buttons.find_node("BlockButton").show()
 	main.nextRoomButton.show()
+	emit_signal("cinematic_ended")
 	queue_free()
 
 func set_black_screen():
