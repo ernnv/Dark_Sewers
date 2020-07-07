@@ -2,8 +2,8 @@ extends "res://Scripts/ActionButton.gd"
 
 signal finished
 
-func ready():
-	hoverInfo.description = "Replenishes health. "
+func _ready():
+	hoverInfo.description = "IRONWILL: Death has closed in many times before, everchasing. Restores health to max."
 
 func _on_pressed():
 	var Player = BATTLE_UNITS.Player

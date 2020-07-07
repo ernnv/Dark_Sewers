@@ -24,9 +24,9 @@ __meta__ = {
 }
 
 [node name="Logo" type="Label" parent="."]
-margin_left = 10.0
+margin_left = 11.0
 margin_top = 14.0
-margin_right = 80.0
+margin_right = 81.0
 margin_bottom = 26.0
 rect_min_size = Vector2( 70, 12 )
 text = "DARK SEWERS"
@@ -68,7 +68,7 @@ margin_left = 5.17654
 margin_top = 135.237
 margin_right = 54.1765
 margin_bottom = 147.237
-text = "version 0.6"
+text = "version 0.7"
 __meta__ = {
 "_edit_use_anchors_": false
 }

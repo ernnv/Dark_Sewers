@@ -110,5 +110,5 @@ func _on_PlayerStats_died():
 	add_child(gameOver)
 
 func _on_BlockCinematic_ended():
-		var level4 = LEVEL4.instance()
-		add_child(level4)
+	var level4 = LEVEL4.instance()
+	add_child(level4)
